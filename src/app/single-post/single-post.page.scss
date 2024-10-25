@@ -22,14 +22,14 @@
 // }
 
 ion-card-title {
-    font-size: 1.75rem;
+    font-size: 18px;
     font-weight: bold;
     text-align: left;
     --color: #52ffe4;
 }
 
-ion-card-subtitle {
-    font-size: 19px;
+ion-text {
+    font-size: 18px;
     font-weight: bold;
     text-align: center;
     --color: #d1fff8;
@@ -42,16 +42,18 @@ ion-card-header.ios {
 
 
 .label-custom {
-    font-size: 1.2em;
+    font-size: 24px;
     font-weight: bold;
 }
 
 .post-img {
-    width: 150px;
-    height: 150px;
+    width: 100%;
+    height: auto;
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid #007bff;
+    // border-top-left-radius: 10px; // Match card border radius
+    // border-top-right-radius: 10px; 
 }
 
 .post-img-container {

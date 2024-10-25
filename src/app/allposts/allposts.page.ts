@@ -42,7 +42,7 @@ export class AllpostsPage {
 
     if (posts) {
       this.allposts = posts.filter((post: any) => post.email == this.loggedInUser.email).
-      sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+        sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
       ;
       this.originalPosts = [...this.allposts];
 
@@ -154,6 +154,10 @@ export class AllpostsPage {
 
   backToAddPost() {
     this.Navigation.navigateWithRoute('/home');
+  }
+
+  stopEvent(event: Event) {
+    event.stopPropagation();
   }
 
 }

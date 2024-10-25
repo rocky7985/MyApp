@@ -16,99 +16,69 @@
     justify-content: center;
 }
 
-.label-custom {
-    font-size: 21px;
-    font-weight: bold;
+ion-card {
+    width: 85%;
+    margin: 10px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    --background: #000;
+    --color: #9efff0;
+    padding: 0; // Removed padding for a tighter look
 }
 
-// ion-card {
-//     width: 95%;
-//     margin: 10px auto;
-//     border-radius: 10px;
-//     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-//     --background: #000;
-//     --color: #9efff0;
-// }
+.post-img {
+    width: 100%; // Make the image full width
+    height: auto; // Maintain aspect ratio
+    border-top-left-radius: 10px; // Match card border radius
+    border-top-right-radius: 10px; // Match card border radius
+}
+
+.card-header-custom {
+    background-color: white; // Set the background to white
+    border: 1px solid black; // Set border color to black
+    padding: 10px; // Ensure some padding for aesthetics
+}
+
+.card-label-container {
+    font-size: 26px; // Increase font size for the label
+    font-weight: bold; // Make the label bold
+    color: black; // Set label color to black for contrast
+}
 
 ion-card-title {
-    font-size: 1.75rem;
-    font-weight: bold;
-    text-align: left;
-    --color: #52ffe4;
-}
-
-ion-card-subtitle {
-    font-size: 19px;
-    font-weight: bold;
-    text-align: center;
-    --color: #d1fff8;
-}
-
-ion-card-header.ios {
-    display: flex;
-    flex-flow: column-reverse;
+    font-size: 22px; // Keep the title size larger than default
+    font-weight: normal; // Ensure title is not bolder than the label
 }
 
 .icon-container {
     display: flex;
     justify-content: flex-end;
-    padding: 5px 10px;
-    margin-bottom: 5px;
-}
-
-ion-card-content {
-    padding-top: 10px;
+    padding: 5px;
 }
 
 ion-icon {
     cursor: pointer;
-}
-
-.post-img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #007bff;
-}
-
-.post-img-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0;
-}
-
-.back-icon {
-    font-size: 28px;
-    font-weight: bold;
-    color: black;
+    font-size: 24px; // Icon size
 }
 
 ion-searchbar {
-    --background: #2c2c2e;
-    --color: #fff;
-    --placeholder-color: #a0a0a0;
-    --icon-color: #fff;
-    --clear-button-color: #ff3b30;
-
-    border: 2px solid #1f1f1f;
-    border-radius: 10px;
-    font-weight: bold;
-    padding: 8px;
+    --border-color: black; 
+    border: 2px solid black; 
+    border-radius: 10px; 
+    padding: 8px; 
 
     .searchbar-clear-icon {
-        color: #ff3b30;
-        font-size: 20px;
+        color: #ff3b30; 
+        font-size: 20px; 
     }
 
     .searchbar-input-container {
-        background-color: #1c1c1e;
-        border-radius: 8px;
-        padding-left: 10px;
+        background-color: #1c1c1e; 
+        border-radius: 8px; 
+        padding-left: 10px; 
     }
 
     .searchbar-search-icon {
-        color: #fff;
+        color: black; 
     }
 }
