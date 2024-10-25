@@ -1,0 +1,45 @@
+.label-custom {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.input-custom::placeholder {
+    font-size: 0.8em;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.title-center {
+    text-align: center;
+    width: 100%;
+    font-size: 24px;
+    font-weight: bold;
+    color: blue;
+}
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #007bff;
+}
+
+.back-icon {
+    font-size: 28px;
+    font-weight: bold;
+    color: black;
+}

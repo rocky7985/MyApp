@@ -1,0 +1,41 @@
+.title-center {
+    text-align: center;
+    width: 100%;
+    font-size: 24px;
+    font-weight: bold;
+    color: blue;
+}
+
+.label-custom {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.custom-popover {
+    --width: auto;
+    --max-height: 80%;
+    --border-radius: 10px;
+}
+
+.popover-content {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+ion-textarea {
+    min-height: 150px;
+    background-color: #f0f8ff;
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.back-icon {
+    font-size: 28px;
+    font-weight: bold;
+    color: black;
+}

@@ -1,0 +1,146 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-icon name="arrow-back-outline" class="back-icon" (click)="gotoCategory()"></ion-icon>
+    <ion-title class="title-center">Update</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-spinner *ngIf="loadCategory"></ion-spinner>
+
+  <form [formGroup]="updateCategory" (ngSubmit)="updateCategoryData()">
+
+    <ion-spinner *ngIf="updateData"></ion-spinner>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12" class="page-container">
+
+          <ion-item class="profile-img-container">
+            <ion-img *ngIf="selectedImage" [src]="selectedImage" (click)="fileInput.click()"
+              class="profile-img"></ion-img>
+            <input type="file" #fileInput (change)="uploadProfileImage($event)" accept="image/*" hidden />
+            <ion-img *ngIf="!selectedImage" src="assets/icon/download (1).png" (click)="fileInput.click()"
+              class="profile-img">
+            </ion-img>
+          </ion-item>
+
+          <ion-label class="label-custom" color="primary">Profile Image</ion-label>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-item>
+      <ion-label color="dark" position="stacked" class="label-custom">First Name</ion-label>
+      <ion-input type="text" formControlName="firstName" placeholder="Enter your First Name" maxLength="20"
+        class="input-custom"></ion-input>
+      <ion-note
+        *ngIf="updateCategory.get('firstName')?.hasError('required') && (updateCategory.get('firstName')?.dirty || updateCategory.get('firstName')?.touched)"
+        style="color:red">
+        <ion-icon name="information-circle-outline"></ion-icon>
+        Product Name is required.
+      </ion-note>
+      <ion-note
+        *ngIf="updateCategory.get('firstName')?.hasError('pattern') && (updateCategory.get('firstName')?.dirty || updateCategory.get('firstName')?.touched)"
+        style="color:red">
+        <ion-icon name="information-circle-outline"></ion-icon>
+        Only Letters are allowed starting with capital letter.
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="dark" position="stacked" class="label-custom">Last Name</ion-label>
+      <ion-input type="text" formControlName="lastName" placeholder="Enter your Last Name" maxLength="20"
+        class="input-custom"></ion-input>
+      <ion-note
+        *ngIf="updateCategory.get('lastName')?.hasError('required') && (updateCategory.get('lastName')?.dirty || updateCategory.get('lastName')?.touched)"
+        style="color:red">
+        <ion-icon name="information-circle-outline"></ion-icon>
+        Product Name is required.
+      </ion-note>
+      <ion-note
+        *ngIf="updateCategory.get('lastName')?.hasError('pattern') && (updateCategory.get('lastName')?.dirty || updateCategory.get('lastName')?.touched)"
+        style="color:red">
+        <ion-icon name="information-circle-outline"></ion-icon>
+        Only Letters are allowed starting with capital letter.
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="dark" position="stacked" class="label-custom">Phone No.</ion-label>
+      <ion-input type="text" formControlName="phone" placeholder="Enter your Phone No." class="input-custom"
+        maxLength="10" inputmode="numeric"></ion-input>
+      <ion-note
+        *ngIf="updateCategory.get('phone')?.hasError('required') && (updateCategory.get('phone')?.dirty || updateCategory.get('phone')?.touched)"
+        style="color:red">
+        Phone No. is required.
+      </ion-note>
+      <ion-note
+        *ngIf="updateCategory.get('phone')?.hasError('pattern') && (updateCategory.get('phone')?.dirty || updateCategory.get('phone')?.touched)"
+        style="color:red">
+        Phone No. start with whole numbers and no special char. allowed.
+      </ion-note>
+      <ion-note
+        *ngIf="updateCategory.get('phone')?.hasError('minlength') && (updateCategory.get('phone')?.dirty || updateCategory.get('phone')?.touched)"
+        style="color:red">
+        Phone No. must be exactly 10 digits.
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="dark" position="stacked" class="label-custom">Address</ion-label>
+      <ion-input type="text" formControlName="address" placeholder="Enter your Address" maxLength="30"
+        class="input-custom"></ion-input>
+      <ion-note
+        *ngIf="updateCategory.get('address')?.hasError('required') && (updateCategory.get('address')?.dirty || updateCategory.get('address')?.touched)"
+        style="color:red">
+        <ion-icon name="information-circle-outline"></ion-icon>
+        Address is required.
+      </ion-note>
+      <ion-note
+        *ngIf="updateCategory.get('address')?.hasError('pattern') && (updateCategory.get('address')?.dirty || updateCategory.get('address')?.touched)"
+        style="color:red">
+        <ion-icon name="information-circle-outline"></ion-icon>
+        Only Letters are allowed starting with capital letter.
+      </ion-note>
+    </ion-item>
+
+    <ion-grid>
+      <ion-label class="label-custom" color="tertiary">Update your Category</ion-label>
+      <ion-icon name="chevron-down-outline" color="danger"></ion-icon>
+      <ion-row formArrayName="category">
+        <ion-col size="12" *ngFor="let categoryControl of categories.controls; let i=index" [formGroupName]="i">
+          <ion-item>
+            <ion-label position="stacked" class="label-custom">Category Name</ion-label>
+
+            <ion-input formControlName="name" placeholder="Enter your Category Name" maxLength="10"
+              class="input-custom"></ion-input>
+
+            <ion-note
+              *ngIf="categoryControl.get('name')?.hasError('required') && (categoryControl.get('name')?.dirty || categoryControl.get('name')?.touched)"
+              style="color:red">
+              <ion-icon name="information-circle-outline"></ion-icon>
+              Category Name is required.
+            </ion-note>
+            <ion-note
+              *ngIf="categoryControl.get('name')?.hasError('pattern') && (categoryControl.get('name')?.dirty || categoryControl.get('name')?.touched)"
+              style="color:red">
+              <ion-icon name="information-circle-outline"></ion-icon>
+              Only Letters are allowed starting with capital letter.
+            </ion-note>
+
+            <ion-buttons slot="end">
+              <ion-icon *ngIf="categories.length>1" name="remove-circle-outline" color="danger"
+                (click)="removeCategory(i)"></ion-icon>
+              <ion-icon *ngIf="categories.length<5 && i==categories.length-1" name="add-circle-outline" color="danger"
+                (click)="addCategory()"></ion-icon>
+            </ion-buttons>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-button expand="full" type="submit" [disabled]="updateCategory.invalid">Submit</ion-button>
+  </form>
+</ion-content>

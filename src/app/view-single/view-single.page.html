@@ -1,0 +1,75 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-button fill="clear" (click)="goToShop()">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+      <ion-label>Back</ion-label>
+    </ion-button>
+    <ion-title class="title-center">View-Product</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-spinner *ngIf="loadProduct"></ion-spinner>
+
+  <ng-container *ngIf="!loadProduct && viewProduct ">
+    <ion-card>
+
+      <ion-card-header>
+        <ion-card-content>
+
+          <swiper-container pagination="true" paginationClickable="true">
+            <swiper-slide *ngFor=" let image of viewProduct.featured_image">
+              <ion-img [src]="image" class="product-image"></ion-img>
+            </swiper-slide>
+          </swiper-container>
+
+
+          <ion-item>
+            <ion-card-title class="title-center">{{viewProduct.productName}}</ion-card-title>
+          </ion-item>
+
+          <ion-item>
+            <ion-label color="dark" style="font-weight: bolder;">Description:</ion-label>
+            <ion-subtitle style="font-weight: bolder;">{{viewProduct.productDescription}}</ion-subtitle>
+          </ion-item>
+
+          <ion-item style="font-weight: bolder;">Price:
+            <ion-note color="primary" style="font-weight: bolder;">{{viewProduct.productPrice | currency}}</ion-note>
+          </ion-item>
+
+
+          <ion-item>
+            <ion-label slot="start" style="font-weight: bolder;">SKU:{{viewProduct.productId}}</ion-label>
+          </ion-item>
+
+          <ion-list>
+
+            <ion-label class="dimensions">Dimensions</ion-label>
+
+            <ion-item>
+              <ion-label style="font-weight: bolder;">Height:</ion-label>
+              <ion-note slot="end" color="dark" style="font-weight: bolder;"
+                *ngIf="viewProduct.dimensions?.height">{{viewProduct.dimensions.height}} ft.</ion-note>
+            </ion-item>
+
+            <ion-item>
+              <ion-label style="font-weight: bolder;">Weight:</ion-label>
+              <ion-note slot="end" color="dark" style="font-weight: bolder;"
+                *ngIf="viewProduct.dimensions?.weight">{{viewProduct.dimensions.weight}} Kg</ion-note>
+            </ion-item>
+
+            <ion-item>
+              <ion-label style="font-weight: bolder;">Depth:</ion-label>
+              <ion-note slot="end" color="dark" style="font-weight: bolder;"
+                *ngIf="viewProduct.dimensions?.depth">{{viewProduct.dimensions.depth}} m</ion-note>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+
+      </ion-card-header>
+
+    </ion-card>
+  </ng-container>
+
+</ion-content>

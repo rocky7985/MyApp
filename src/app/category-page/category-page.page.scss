@@ -1,0 +1,92 @@
+.label-custom {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+
+.title-center {
+    text-align: center;
+    width: 100%;
+    font-size: 24px;
+    font-weight: bold;
+    color: blue;
+}
+
+.no-items-message {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+ion-card {
+    width: 95%;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    --background: #000;
+    --color: #9efff0;
+    position: relative;
+}
+
+ion-card-title {
+    font-size: 1.75rem;
+    font-weight: bold;
+    text-align: center;
+    --color: #52ffe4;
+}
+
+ion-card-subtitle {
+    font-size: 19px;
+    font-weight: bold;
+    text-align: center;
+    --color: #d1fff8;
+}
+
+.icon-container {
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+}
+
+
+ion-card-content {
+    padding-top: 10px;
+}
+
+ion-icon {
+    cursor: pointer;
+}
+
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #007bff;
+}
+
+.profile-img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.back-icon {
+    font-size: 28px;
+    font-weight: bold;
+    color: black;
+}

@@ -1,0 +1,44 @@
+.label-custom {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-custom::placeholder {
+    font-size: 0.8em;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.title-center {
+    text-align: center;
+    width: 100%;
+    font-size: 24px;
+    font-weight: bold;
+    color: blue;
+}
+
+ion-icon {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #d9534f;
+}
+
+ion-buttons ion-icon {
+    font-size: 2.5em;
+    margin: 0 10px;
+}
+
+ion-buttons ion-icon:hover {
+    color: #ff5c5c;
+    cursor: pointer;
+}
+
+.sign-up ion-button {
+    margin: 0;
+}

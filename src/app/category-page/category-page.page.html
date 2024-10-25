@@ -1,0 +1,81 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-icon name="arrow-back-outline" class="back-icon" (click)="gotoAllPosts()"></ion-icon>
+
+    <ion-title class="title-center">Category</ion-title>
+  </ion-toolbar>
+  <ion-searchbar position="fixed" [(ngModel)]="searchCategory" placeholder="Enter to filter" (ionInput)="search()"
+    (ionClear)="resetCategories()"></ion-searchbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-spinner *ngIf="loadCategories"></ion-spinner>
+
+  <ng-container *ngIf="!loadCategories">
+    <ion-row>
+      <ion-col size="12" *ngFor="let item of allCategories; let i=index">
+        <ion-card color="medium">
+
+          <ion-row class="icon-container">
+            <ion-col size="auto">
+              <ion-icon name="trash-outline" size="large" color="danger"
+                (click)="deleteAlert(item.categoryId)"></ion-icon></ion-col>
+            <ion-col size="auto">
+              <ion-icon name="create-outline" size="large" color="danger"
+                (click)="updateCategory(item.categoryId)"></ion-icon>
+            </ion-col>
+          </ion-row>
+
+
+          <ion-card-header>
+            <ion-card-content>
+
+              <ion-grid>
+                <ion-row>
+                  <ion-col size="12" class="page-container">
+                    <ion-img [src]=item.profileImage class="profile-img"></ion-img>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+
+              <ion-item>
+                <ion-card-title class="title-center">{{item.firstName}} {{item.lastName}}</ion-card-title>
+              </ion-item>
+
+              <ion-item>
+                <ion-label color="dark" style="font-weight: bolder;" class="label-custom">Phone:</ion-label>
+                <ion-card-subtitle>{{item.phone}}</ion-card-subtitle>
+              </ion-item>
+
+              <ion-item>
+                <ion-label color="dark" style="font-weight: bolder;" class="label-custom">Address: </ion-label>
+                <ion-card-subtitle>{{item.address}}</ion-card-subtitle>
+              </ion-item>
+
+              <ion-item>
+                <ion-label color="dark" style="font-weight: bolder;" class="label-custom">Category:</ion-label>
+                <ion-list>
+                  <ion-item *ngFor="let category of item.category">
+                    <ion-icon name="remove-outline"></ion-icon>
+                    <ion-card-subtitle>{{category.name}}</ion-card-subtitle>
+                  </ion-item>
+                </ion-list>
+              </ion-item>
+
+            </ion-card-content>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ng-container>
+
+  <ion-grid>
+    <ion-row *ngIf="!loadCategories">
+      <ion-col size="12" class="no-items-message" *ngIf="allCategories.length==0">
+        No items to display.
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

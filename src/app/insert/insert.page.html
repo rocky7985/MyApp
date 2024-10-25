@@ -1,0 +1,137 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-icon name="arrow-back-outline" class="back-icon" (click)="gotoAllPosts()"></ion-icon>
+    <ion-title class="title-center">Add-Product</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="insertForm" (ngSubmit)="addProduct()">
+
+    <ion-item>
+      <ion-label color="dark" position="stacked" class="label-custom">Product Name</ion-label>
+      <ion-input type="text" formControlName="productName" placeholder="Enter your Product Name" maxLength="20"
+        class="input-custom"></ion-input>
+      <ion-note
+        *ngIf="insertForm && insertForm.get('productName')?.hasError('required') && (insertForm.get('productName')?.dirty || insertForm.get('productName')?.touched)"
+        style="color:red">
+        <ion-icon name="information-circle-outline"></ion-icon>
+        Product Name is required.
+      </ion-note>
+      <ion-note
+        *ngIf="insertForm && insertForm.get('productName')?.hasError('pattern') && (insertForm.get('productName')?.dirty || insertForm.get('productName')?.touched)"
+        style="color:red">
+        <ion-icon name="information-circle-outline"></ion-icon>
+        Only Letters are allowed starting with capital letter.
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="dark" position="stacked" class="label-custom">Product Description</ion-label>
+      <ion-textarea formControlName="productDescription" placeholder="Enter your Product Description"
+        maxLength="20"></ion-textarea>
+      <ion-note
+        *ngIf="insertForm.get('productDescription')?.hasError('required') && (insertForm.get('productDescription')?.dirty || insertForm.get('productDescription')?.touched)"
+        style="color:red">
+        Product Description is required.
+      </ion-note>
+      <ion-note
+        *ngIf="insertForm.get('productDescription')?.hasError('maxLength') && (insertForm.get('productDescription')?.dirty || insertForm.get('productDescription')?.touched)"
+        style="color:red">
+        Upto 20 characters is required.
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="dark" position="stacked" class="label-custom">Product Price</ion-label>
+      <ion-input type="text" formControlName="productPrice" placeholder="Enter your Product Price" class="input-custom"
+        maxLength="10"></ion-input>
+      <ion-note
+        *ngIf="insertForm.get('productPrice')?.hasError('required') && (insertForm.get('productPrice')?.dirty || insertForm.get('productPrice')?.touched)"
+        style="color:red">
+        Product Price is required.
+      </ion-note>
+      <ion-note
+        *ngIf="insertForm.get('productPrice')?.hasError('pattern') && (insertForm.get('productPrice')?.dirty || insertForm.get('productPrice')?.touched)"
+        style="color:red">
+        Product Price start with only natural numbers and no special char. allowed.
+      </ion-note>
+    </ion-item>
+
+    <fieldset formGroupName="dimensions">
+      <ion-label>Dimensions</ion-label>
+
+      <ion-item>
+        <ion-label color="dark" position="stacked" class="label-custom">Height</ion-label>
+        <ion-input type="number" step="0.01" formControlName="height" placeholder="Enter Height"
+          class="input-custom"></ion-input>
+        <ion-note
+          *ngIf="insertForm.get('dimensions.height')?.hasError('required') && (insertForm.get('dimensions.height')?.dirty || insertForm.get('dimensions.height')?.touched)"
+          style="color:red">
+          Height is required with only positive numbers & decimal(eg: 6 or 6.5).
+        </ion-note>
+        <ion-note
+          *ngIf="insertForm.get('dimensions.height')?.hasError('pattern') && (insertForm.get('dimensions.height')?.dirty || insertForm.get('dimensions.height')?.touched)"
+          style="color:red">
+          Height must be a number with up to 5 digits before the decimal and 2 digits after the decimal.Scientific
+          notation is not allowed.
+        </ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="dark" position="stacked" class="label-custom">Weight</ion-label>
+        <ion-input type="number" step="0.01" formControlName="weight" placeholder="Enter Weight"
+          class="input-custom"></ion-input>
+        <ion-note
+          *ngIf="insertForm.get('dimensions.weight')?.hasError('required') && (insertForm.get('dimensions.weight')?.dirty || insertForm.get('dimensions.weight')?.touched)"
+          style="color:red">
+          Weight is required with only positive numbersand decimal(eg: 6 or 6.5).
+        </ion-note>
+        <ion-note
+          *ngIf="insertForm.get('dimensions.weight')?.hasError('pattern') && (insertForm.get('dimensions.weight')?.dirty || insertForm.get('dimensions.weight')?.touched)"
+          style="color:red">
+          Weight must be a number with up to 5 digits before the decimal and 2 digits after the decimal.Scientific
+          notation is not allowed.
+        </ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="dark" position="stacked" class="label-custom">Depth</ion-label>
+        <ion-input type="number" step="0.01" formControlName="depth" placeholder="Enter Depth"
+          class="input-custom"></ion-input>
+        <ion-note
+          *ngIf="insertForm.get('dimensions.depth')?.hasError('required') && (insertForm.get('dimensions.depth')?.dirty || insertForm.get('dimensions.depth')?.touched)"
+          style="color:red">
+          Depth is required with only positive numbers and decimal(eg: 6 or 6.5).
+        </ion-note>
+        <ion-note
+          *ngIf="insertForm.get('dimensions.depth')?.hasError('pattern') && (insertForm.get('dimensions.depth')?.dirty || insertForm.get('dimensions.depth')?.touched)"
+          style="color:red">
+          Depth must be a number with up to 5 digits before the decimal and 2 digits after the decimal.Scientific
+          notation is not allowed.
+        </ion-note>
+      </ion-item>
+    </fieldset>
+
+    <ion-item>
+      <ion-label color="dark" class="label-custom">Featured Image</ion-label>
+    </ion-item>
+
+    <ion-row *ngIf="selectedImage.length>0">
+      <ion-col size="2.4" *ngFor=" let image of selectedImage; let i = index" style="position: relative; padding: 5px;">
+        <ion-icon name="close-circle-outline" color="danger" size="small" (click)="removeImage(i)"
+          style="position: absolute; top: 5px; right: 5px; cursor: pointer; font-size: 24px;">Remove</ion-icon>
+        <ion-img [src]="image" style="width: 100%; height: 140px; border-radius: 15px;"></ion-img>
+
+      </ion-col>
+    </ion-row>
+
+    <ion-item *ngIf="selectedImage.length < maxImages">
+      <ion-img src="assets/icon/download (1).png" (click)="fileInput.click()"
+        style="cursor: pointer; width: 70px; height: 70px; border: 2px solid #000; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); opacity: 0.9;"></ion-img>
+      <input type="file" #fileInput (change)="handleFileSelect($event)" accept="image/*" multiple hidden />
+    </ion-item>
+
+    <ion-button type="submit" expand="block" [disabled]="insertForm.invalid">Add Product</ion-button>
+  </form>
+</ion-content>

@@ -1,0 +1,85 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.scrollable-content {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-bottom: 80px; 
+}
+
+.title-center {
+    text-align: center;
+    width: 100%;
+    font-size: 24px;
+    font-weight: bold;
+    color: blue;
+    margin-bottom: 8px;
+}
+
+.meeting-card {
+    margin-top: 20px;
+    padding: 16px;
+    background-color: #2a2a2a;
+    border-radius: 10px;
+}
+
+.no-meetings-card {
+    height: 140px;
+    padding: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.meeting-row {
+    margin-bottom: 12px;
+}
+
+ion-item {
+    --inner-padding-top: 8px;
+    --inner-padding-bottom: 8px;
+    --inner-padding-start: 0px;
+    --inner-padding-end: 0px;
+    --highlight-height: 0;
+    --background: none;
+    color: white;
+}
+
+ion-card-subtitle {
+    color: #ffcc00;
+    font-size: 16px;
+}
+
+ion-card-header {
+    text-align: center;
+    color: #ffcc00;
+}
+
+ion-card-content {
+    color: white;
+}
+
+ion-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    box-shadow: none;
+    border-top: none;
+}
+
+ion-button {
+    margin-top: 20px;
+}
+
+.back-icon {
+    font-size: 28px;
+    font-weight: bold;
+    color: black;
+}
