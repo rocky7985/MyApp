@@ -16,69 +16,90 @@
     justify-content: center;
 }
 
-ion-card {
-    width: 85%;
+.card-item {
+    width: 90%;
     margin: 10px auto;
-    border-radius: 10px;
+    border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    --background: #000;
+    background-color: #1c1c1e;
     --color: #9efff0;
-    padding: 0; // Removed padding for a tighter look
+    padding: 0;
+    border: 2px solid black;
+    display: flex;
+    align-items: center;
 }
 
-.post-img {
-    width: 100%; // Make the image full width
-    height: auto; // Maintain aspect ratio
-    border-top-left-radius: 10px; // Match card border radius
-    border-top-right-radius: 10px; // Match card border radius
+.post-img-circle {
+    --border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    margin-right: 10px;
 }
 
-.card-header-custom {
-    background-color: white; // Set the background to white
-    border: 1px solid black; // Set border color to black
-    padding: 10px; // Ensure some padding for aesthetics
+.card-item {
+    width: 90%;
+    margin: 10px auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #1c1c1e;
+    --color: #9efff0;
+    padding: 0;
+    border: 2px solid black;
+    display: flex;
+    align-items: center;
+}
+
+.post-img-circle {
+    --border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    margin-right: 10px;
 }
 
 .card-label-container {
-    font-size: 26px; // Increase font size for the label
-    font-weight: bold; // Make the label bold
-    color: black; // Set label color to black for contrast
+    font-size: 20px;
+    font-weight: bold;
+    color: #9efff0;
+    padding: 5px 0;
 }
 
 ion-card-title {
-    font-size: 22px; // Keep the title size larger than default
-    font-weight: normal; // Ensure title is not bolder than the label
+    font-size: 18px;
+    font-weight: bold;
+    color: black; // Title color set to black and bold
 }
 
-.icon-container {
-    display: flex;
-    justify-content: flex-end;
-    padding: 5px;
+.right-arrow-icon {
+    font-size: 24px;
+    color: black;
 }
 
 ion-icon {
     cursor: pointer;
-    font-size: 24px; // Icon size
+    font-size: 24px;
 }
 
+
 ion-searchbar {
-    --border-color: black; 
-    border: 2px solid black; 
-    border-radius: 10px; 
-    padding: 8px; 
+    --border-color: black;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 8px;
 
     .searchbar-clear-icon {
-        color: #ff3b30; 
-        font-size: 20px; 
+        color: #ff3b30;
+        font-size: 20px;
     }
 
     .searchbar-input-container {
-        background-color: #1c1c1e; 
-        border-radius: 8px; 
-        padding-left: 10px; 
+        background-color: #1c1c1e;
+        border-radius: 8px;
+        padding-left: 10px;
     }
 
     .searchbar-search-icon {
-        color: black; 
+        color: black;
     }
 }
